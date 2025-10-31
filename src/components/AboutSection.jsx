@@ -31,7 +31,7 @@ export const AboutSection = () => {
     return (
       <section id="about" className="py-24 px-4 relative overflow-hidden">
         {/* Background decoration */}
-        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-primary/5 to-transparent pointer-events-none" />
+        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-primary/5 to-transparent pointer-events-none dark:via-primary/10" />
         
         <div className="container mx-auto max-w-5xl relative z-10">
             <h2 className="text-3xl md:text-4xl font-bold mb-12 text-center">
@@ -80,14 +80,15 @@ export const AboutSection = () => {
                         return (
                             <div
                                 key={skill.id}
-                                className={`gradient-border p-6 cursor-pointer transition-all duration-500 transform bg-slate-900/80 backdrop-blur-md ${
-                                    isHovered ? 'scale-105 -translate-y-2 bg-slate-900/90' : 'scale-100'
+                                className={`p-6 cursor-pointer transition-all duration-500 transform rounded-lg shadow-lg hover:shadow-xl border border-gray-200 dark:border-slate-800 ${
+                                    isHovered ? 'scale-105 -translate-y-2' : 'scale-100'
                                 }`}
-                                onMouseEnter={() => setHoveredCard(skill.id)}
-                                onMouseLeave={() => setHoveredCard(null)}
                                 style={{
+                                    backgroundColor: 'transparent',
                                     animationDelay: `${index * 0.1}s`
                                 }}
+                                onMouseEnter={() => setHoveredCard(skill.id)}
+                                onMouseLeave={() => setHoveredCard(null)}
                             >
                                 {/* Animated background gradient on hover */}
                                 <div 
@@ -97,8 +98,8 @@ export const AboutSection = () => {
                                 />
                                 
                                 <div className="flex items-start gap-4 relative z-10">
-                                    <div className={`p-3 rounded-full bg-primary/10 flex-shrink-0 transition-all duration-500 ${
-                                        isHovered ? 'bg-primary/20 rotate-12 scale-110' : ''
+                                    <div className={`p-3 rounded-full bg-primary/20 dark:bg-primary/20 flex-shrink-0 transition-all duration-500 ${
+                                        isHovered ? 'bg-primary/30 dark:bg-primary/30 rotate-12 scale-110' : ''
                                     }`}>
                                         <Icon className={`w-6 h-6 text-primary transition-all duration-500 ${
                                             isHovered ? 'scale-110' : ''

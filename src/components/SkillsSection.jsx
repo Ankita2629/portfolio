@@ -106,7 +106,7 @@ export const SkillsSection = () => {
     const activeData = categories[activeCategory];
 
     return (
-        <section id="skills" className="py-24 px-4 relative overflow-hidden bg-gradient-to-b from-transparent to-slate-950/50">
+        <section id="skills" className="py-24 px-4 relative overflow-hidden">
             <div className="container mx-auto max-w-6xl relative z-10">
                 {/* Header */}
                 <div className="text-center mb-16">
@@ -132,12 +132,12 @@ export const SkillsSection = () => {
                                     className={`w-full text-left p-5 rounded-xl transition-all duration-300 border-2 ${
                                         isActive
                                             ? 'bg-primary/10 border-primary shadow-lg shadow-primary/20'
-                                            : 'bg-slate-900/50 border-slate-800 hover:border-slate-700 hover:bg-slate-900/70'
+                                            : 'bg-transparent border-gray-200 dark:border-slate-800 hover:border-gray-300 dark:hover:border-slate-700 hover:bg-gray-50 dark:hover:bg-slate-900/70'
                                     }`}
                                 >
                                     <div className="flex items-start gap-4">
                                         <div className={`p-2 rounded-lg transition-colors duration-300 ${
-                                            isActive ? 'bg-primary/20' : 'bg-slate-800'
+                                            isActive ? 'bg-primary/20' : 'bg-transparent'
                                         }`}>
                                             <Icon className={`w-5 h-5 ${
                                                 isActive ? 'text-primary' : 'text-muted-foreground'
@@ -161,9 +161,9 @@ export const SkillsSection = () => {
 
                     {/* Skills Display */}
                     <div className="lg:col-span-8">
-                        <div className="bg-slate-900/50 backdrop-blur-sm rounded-xl p-8 border border-slate-800 min-h-[500px]">
+                        <div className="bg-transparent backdrop-blur-sm rounded-xl p-8 border border-gray-200 dark:border-slate-800 min-h-[500px]">
                             {/* Category Header */}
-                            <div className="flex items-start gap-4 mb-8 pb-6 border-b border-slate-800">
+                            <div className="flex items-start gap-4 mb-8 pb-6 border-b border-gray-200 dark:border-slate-800">
                                 {(() => {
                                     const Icon = activeData.icon;
                                     return (
@@ -194,7 +194,7 @@ export const SkillsSection = () => {
                                         <div className="flex justify-between items-center mb-2">
                                             <div className="flex items-center gap-3">
                                                 <span className="font-semibold">{skill.name}</span>
-                                                <span className="text-xs text-muted-foreground bg-slate-800 px-2 py-1 rounded">
+                                                <span className="text-xs text-muted-foreground bg-background/30 dark:bg-background/10 backdrop-blur-sm px-2 py-1 rounded border border-primary/40 hover:border-primary/60 transition-all duration-300">
                                                     {skill.years} {skill.years === 1 ? 'year' : 'years'}
                                                 </span>
                                             </div>
@@ -204,7 +204,7 @@ export const SkillsSection = () => {
                                         </div>
 
                                         {/* Progress Bar */}
-                                        <div className="relative h-2.5 bg-slate-800 rounded-full overflow-hidden">
+                                        <div className="relative h-2.5 bg-gray-200 dark:bg-slate-800 rounded-full overflow-hidden">
                                             <div 
                                                 className="absolute inset-0 bg-gradient-to-r from-primary/20 to-primary/10"
                                                 style={{ width: `${skill.level}%` }}
@@ -228,7 +228,7 @@ export const SkillsSection = () => {
                             </div>
 
                             {/* Summary Stats */}
-                            <div className="mt-8 pt-6 border-t border-slate-800 grid grid-cols-3 gap-4">
+                            <div className="mt-8 pt-6 border-t border-gray-200 dark:border-slate-800 grid grid-cols-3 gap-4">
                                 <div className="text-center">
                                     <div className="text-2xl font-bold text-primary">
                                         {activeData.skills.length}
@@ -254,25 +254,25 @@ export const SkillsSection = () => {
 
                 {/* Overall Stats */}
                 <div className="mt-12 grid grid-cols-2 md:grid-cols-4 gap-4">
-                    <div className="bg-slate-900/50 backdrop-blur-sm rounded-xl p-6 text-center border border-slate-800">
+                    <div className="bg-transparent backdrop-blur-sm rounded-xl p-6 text-center border border-gray-200 dark:border-slate-800">
                         <div className="text-3xl font-bold text-primary mb-2">
                             {categories.reduce((acc, cat) => acc + cat.skills.length, 0)}
                         </div>
                         <div className="text-sm text-muted-foreground">Total Skills</div>
                     </div>
-                    <div className="bg-slate-900/50 backdrop-blur-sm rounded-xl p-6 text-center border border-slate-800">
+                    <div className="bg-transparent backdrop-blur-sm rounded-xl p-6 text-center border border-gray-200 dark:border-slate-800">
                         <div className="text-3xl font-bold text-primary mb-2">
                             {categories.length}
                         </div>
                         <div className="text-sm text-muted-foreground">Specializations</div>
                     </div>
-                    <div className="bg-slate-900/50 backdrop-blur-sm rounded-xl p-6 text-center border border-slate-800">
+                    <div className="bg-transparent backdrop-blur-sm rounded-xl p-6 text-center border border-gray-200 dark:border-slate-800">
                         <div className="text-3xl font-bold text-primary mb-2">
                             3+
                         </div>
                         <div className="text-sm text-muted-foreground">Years Coding</div>
                     </div>
-                    <div className="bg-slate-900/50 backdrop-blur-sm rounded-xl p-6 text-center border border-slate-800">
+                    <div className="bg-transparent backdrop-blur-sm rounded-xl p-6 text-center border border-gray-200 dark:border-slate-800">
                         <div className="text-3xl font-bold text-primary mb-2">
                             15+
                         </div>

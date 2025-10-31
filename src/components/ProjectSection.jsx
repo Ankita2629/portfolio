@@ -136,7 +136,7 @@ export const ProjectSection = () => {
                             className={`px-6 py-3 rounded-full transition-all duration-300 transform hover:scale-105 ${
                                 filter === f.id
                                     ? 'bg-primary text-primary-foreground shadow-lg shadow-primary/50'
-                                    : 'bg-slate-900/80 backdrop-blur-md hover:bg-slate-800/90 border border-primary/20'
+                                    : 'bg-transparent backdrop-blur-md hover:bg-gray-100 dark:hover:bg-slate-800/90 border-2 border-gray-200 dark:border-primary/20'
                             }`}
                         >
                             <span className="font-medium">{f.name}</span>
@@ -157,8 +157,8 @@ export const ProjectSection = () => {
                         return (
                             <div
                                 key={project.id}
-                                className={`group relative bg-slate-900/80 backdrop-blur-md rounded-2xl border-2 overflow-hidden transition-all duration-500 ${
-                                    isHovered ? 'border-primary shadow-2xl shadow-primary/20 scale-[1.01]' : 'border-slate-800 hover:border-slate-700'
+                                className={`group relative bg-transparent backdrop-blur-md rounded-2xl border-2 overflow-hidden transition-all duration-500 ${
+                                    isHovered ? 'border-primary shadow-2xl shadow-primary/20 scale-[1.01]' : 'border-gray-200 dark:border-slate-800 hover:border-gray-300 dark:hover:border-slate-700'
                                 }`}
                                 onMouseEnter={() => setHoveredProject(project.id)}
                                 onMouseLeave={() => setHoveredProject(null)}
@@ -213,14 +213,14 @@ export const ProjectSection = () => {
                                                 href={project.github}
                                                 target="_blank"
                                                 rel="noopener noreferrer"
-                                                className="p-2 rounded-lg bg-slate-800 hover:bg-slate-700 transition-all duration-300 hover:scale-110"
+                                                className="p-2 rounded-lg bg-gray-100  hover:bg-gray-200 dark:hover:bg-slate-700 transition-all duration-300 hover:scale-110"
                                                 title="View on GitHub"
                                             >
                                                 <Github className="w-5 h-5" />
                                             </a>
                                             <a
                                                 href={project.live}
-                                                className="p-2 rounded-lg bg-slate-800 hover:bg-slate-700 transition-all duration-300 hover:scale-110"
+                                                className="p-2 rounded-lg bg-gray-100  hover:bg-gray-200 dark:hover:bg-slate-700 transition-all duration-300 hover:scale-110"
                                                 title="View Live Demo"
                                             >
                                                 <ExternalLink className="w-5 h-5" />
@@ -236,7 +236,7 @@ export const ProjectSection = () => {
                                     {/* Impact Metrics */}
                                     <div className="grid grid-cols-3 gap-4 mb-6">
                                         {Object.entries(project.impact).map(([key, value]) => (
-                                            <div key={key} className="bg-slate-800/50 rounded-lg p-3 text-center border border-slate-700 hover:border-primary/50 transition-all duration-300">
+                                            <div key={key} className="bg-gray-50 dark:bg-slate-800/50 rounded-lg p-3 text-center border border-gray-200 dark:border-slate-700 hover:border-primary/50 transition-all duration-300">
                                                 <div className="text-lg md:text-xl font-bold text-primary mb-1">{value}</div>
                                                 <div className="text-xs text-muted-foreground capitalize">{key}</div>
                                             </div>
@@ -253,7 +253,7 @@ export const ProjectSection = () => {
                                             {project.technologies.map((tech, techIndex) => (
                                                 <span
                                                     key={techIndex}
-                                                    className="px-3 py-1.5 text-sm rounded-lg bg-slate-800 border border-slate-700 hover:border-primary/50 hover:scale-105 transition-all duration-300 cursor-default"
+                                                    className="px-3 py-1.5 text-sm rounded-lg bg-gray-100  border border-gray-200 dark:border-slate-700 hover:border-primary/50 hover:scale-105 transition-all duration-300 cursor-default"
                                                 >
                                                     {tech}
                                                 </span>
@@ -281,7 +281,7 @@ export const ProjectSection = () => {
                                                 {project.features.map((feature, featureIndex) => (
                                                     <div
                                                         key={featureIndex}
-                                                        className="flex items-start gap-3 text-sm text-muted-foreground bg-slate-800/30 p-3 rounded-lg hover:bg-slate-800/50 transition-colors duration-300"
+                                                        className="flex items-start gap-3 text-sm text-muted-foreground bg-gray-50 dark:bg-slate-800/30 p-3 rounded-lg hover:bg-gray-100 dark:hover:bg-slate-800/50 transition-colors duration-300"
                                                         style={{
                                                             animation: isExpanded ? `slideIn 0.3s ease-out ${featureIndex * 0.05}s backwards` : 'none'
                                                         }}
@@ -314,15 +314,15 @@ export const ProjectSection = () => {
 
                 {/* Stats */}
                 <div className="mt-16 grid grid-cols-1 md:grid-cols-3 gap-6">
-                    <div className="bg-slate-900/50 backdrop-blur-sm rounded-xl p-6 text-center border border-slate-800 hover:border-primary/50 transition-all duration-300 hover:scale-105 cursor-pointer">
+                    <div className="bg-transparent backdrop-blur-sm rounded-xl p-6 text-center border border-gray-200 dark:border-slate-800 hover:border-primary/50 transition-all duration-300 hover:scale-105 cursor-pointer">
                         <div className="text-3xl font-bold text-primary mb-2">3+</div>
                         <div className="text-sm text-muted-foreground">Featured Projects</div>
                     </div>
-                    <div className="bg-slate-900/50 backdrop-blur-sm rounded-xl p-6 text-center border border-slate-800 hover:border-primary/50 transition-all duration-300 hover:scale-105 cursor-pointer">
+                    <div className="bg-transparent backdrop-blur-sm rounded-xl p-6 text-center border border-gray-200 dark:border-slate-800 hover:border-primary/50 transition-all duration-300 hover:scale-105 cursor-pointer">
                         <Award className="w-8 h-8 mx-auto text-primary mb-2" />
                         <div className="text-sm text-muted-foreground">Hackathon Winner</div>
                     </div>
-                    <div className="bg-slate-900/50 backdrop-blur-sm rounded-xl p-6 text-center border border-slate-800 hover:border-primary/50 transition-all duration-300 hover:scale-105 cursor-pointer">
+                    <div className="bg-transparent backdrop-blur-sm rounded-xl p-6 text-center border border-gray-200 dark:border-slate-800 hover:border-primary/50 transition-all duration-300 hover:scale-105 cursor-pointer">
                         <div className="text-3xl font-bold text-primary mb-2">27+</div>
                         <div className="text-sm text-muted-foreground">Languages Supported</div>
                     </div>
