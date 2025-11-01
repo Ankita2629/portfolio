@@ -175,8 +175,9 @@ export const ProjectSection = () => {
                                     {/* Project Header */}
                                     <div className="flex flex-col md:flex-row md:items-start justify-between gap-4 mb-6">
                                         <div className="flex items-start gap-4 flex-1">
-                                            <div className={`p-3 rounded-xl bg-primary/10 transition-all duration-500 ${
-                                                isHovered ? 'bg-primary/20 rotate-6 scale-110' : ''
+
+                                            <div className={`p-3 rounded-xl bg-transparent transition-all duration-500 ${
+                                                isHovered ? 'rotate-6 scale-110' : ''
                                             }`}>
                                                 <Icon className="w-7 h-7 text-primary" />
                                             </div>
@@ -213,14 +214,14 @@ export const ProjectSection = () => {
                                                 href={project.github}
                                                 target="_blank"
                                                 rel="noopener noreferrer"
-                                                className="p-2 rounded-lg bg-gray-100  hover:bg-gray-200 dark:hover:bg-slate-700 transition-all duration-300 hover:scale-110"
+                                                className="p-2 rounded-lg   hover:bg-gray-200 dark:hover:bg-slate-700 transition-all duration-300 hover:scale-110"
                                                 title="View on GitHub"
                                             >
                                                 <Github className="w-5 h-5" />
                                             </a>
                                             <a
                                                 href={project.live}
-                                                className="p-2 rounded-lg bg-gray-100  hover:bg-gray-200 dark:hover:bg-slate-700 transition-all duration-300 hover:scale-110"
+                                                className="p-2 rounded-lg   hover:bg-gray-200 dark:hover:bg-slate-700 transition-all duration-300 hover:scale-110"
                                                 title="View Live Demo"
                                             >
                                                 <ExternalLink className="w-5 h-5" />
