@@ -253,7 +253,7 @@ export const ProjectSection = () => {
                                             {project.technologies.map((tech, techIndex) => (
                                                 <span
                                                     key={techIndex}
-                                                    className="px-3 py-1.5 text-sm rounded-lg bg-gray-100  border border-gray-200 dark:border-slate-700 hover:border-primary/50 hover:scale-105 transition-all duration-300 cursor-default"
+                                                    className="px-3 py-1.5 text-sm rounded-lg bg-transparent border border-gray-200..."
                                                 >
                                                     {tech}
                                                 </span>
