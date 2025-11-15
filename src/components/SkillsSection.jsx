@@ -11,11 +11,11 @@ export const SkillsSection = () => {
             icon: Code2,
             description: "Building responsive and interactive user interfaces",
             skills: [
-                { name: "React.js", level: 90, years: 2 },
-                { name: "HTML5", level: 95, years: 3 },
-                { name: "CSS3", level: 93, years: 3 },
-                { name: "Tailwind CSS", level: 88, years: 1.5 },
-                { name: "JavaScript", level: 92, years: 2.5 }
+                { name: "React.js", level: 70, years: 1.5 },
+                { name: "HTML5", level: 85, years: 2 },
+                { name: "CSS3", level: 80, years: 2 },
+                { name: "Tailwind CSS", level: 75, years: 1.5 },
+                { name: "JavaScript", level: 82, years: 1.5 }
             ]
         },
         {
@@ -24,11 +24,11 @@ export const SkillsSection = () => {
             icon: Server,
             description: "Creating scalable server-side applications",
             skills: [
-                { name: "Node.js", level: 85, years: 2 },
-                { name: "Express.js", level: 83, years: 2 },
-                { name: "REST APIs", level: 87, years: 2 },
-                { name: "Socket.IO", level: 78, years: 1 },
-                { name: "PHP", level: 75, years: 1.5 }
+                { name: "Node.js", level: 75, years: 1 },
+                { name: "Express.js", level: 70, years: 1 },
+                { name: "REST APIs", level: 75, years: 1 },
+                { name: "Socket.IO", level: 75, years: 1 },
+                { name: "PHP", level: 75, years: 1 }
             ]
         },
         {
@@ -37,9 +37,9 @@ export const SkillsSection = () => {
             icon: Database,
             description: "Managing and optimizing data structures",
             skills: [
-                { name: "MongoDB", level: 82, years: 2 },
+                { name: "MongoDB", level: 75, years: 1.5 },
                 { name: "MySQL", level: 80, years: 2 },
-                { name: "Firebase", level: 77, years: 1.5 },
+                { name: "Firebase", level: 60, years: 1 },
                 { name: "SQL", level: 85, years: 2 }
             ]
         },
@@ -49,7 +49,7 @@ export const SkillsSection = () => {
             icon: Code2,
             description: "Core programming and problem solving",
             skills: [
-                { name: "JavaScript", level: 92, years: 2.5 },
+                { name: "JavaScript", level: 82, years: 1.5 },
                 { name: "Python", level: 88, years: 2 },
                 { name: "Java", level: 80, years: 2 },
                 { name: "C", level: 75, years: 1.5 }
@@ -63,8 +63,8 @@ export const SkillsSection = () => {
             skills: [
                 { name: "Vercel", level: 85, years: 1.5 },
                 { name: "Google Cloud Platform", level: 78, years: 1 },
-                { name: "Git", level: 90, years: 2.5 },
-                { name: "GitHub", level: 92, years: 2.5 }
+                { name: "Git", level: 90, years: 1.5 },
+                { name: "GitHub", level: 92, years: 1.5 }
             ]
         },
         {
@@ -84,7 +84,7 @@ export const SkillsSection = () => {
             icon: BarChart3,
             description: "Data processing and analysis",
             skills: [
-                { name: "Microsoft Excel", level: 85, years: 2 },
+                { name: "Microsoft Excel", level: 85, years: 1 },
                 { name: "Pandas", level: 78, years: 1.5 },
                 { name: "NumPy", level: 75, years: 1.5 }
             ]
