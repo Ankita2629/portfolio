@@ -6,7 +6,38 @@ export const ProjectSection = () => {
     const [expandedProject, setExpandedProject] = useState(null);
     const [filter, setFilter] = useState('all');
     
-    const projects = [
+    const projects = [        {
+            id: 1,
+            title: "ChatMate - Real-Time Messaging & Video Calls",
+            icon: Video,
+            date: "2024-2025",
+            category: "fullstack",
+            description: "Full-stack real-time communication platform with messaging, video calls, and language learner matching system.",
+            longDescription: "Built a comprehensive full-stack communication platform enabling seamless real-time messaging and video calls. Features secure authentication, friend request system, and intelligent language-based user matching with Stream Chat and Video APIs.",
+            technologies: ["React.js", "Node.js", "Express.js", "MongoDB", "Stream API", "JWT", "Tailwind CSS"],
+            features: [
+                "Secure JWT authentication & authorization",
+                "Real-time messaging via Stream Chat API",
+                "One-on-one video calls with screen sharing",
+                "Friend request and acceptance system",
+                "Profile-based language learner matching",
+                "Discover users by language preferences",
+                "Real-time notifications & updates",
+                "Call recording capability",
+                "Audio/video toggle controls",
+                "Auto-generated profile avatars"
+            ],
+            impact: {
+                features: "10+",
+                apis: "3",
+                responsive: "100%"
+            },
+            github: "https://github.com/Ankita2629/ChatMate",
+            live: "https://chatmate-wfdy.onrender.com",
+            color: "from-indigo-500/20 to-purple-500/20",
+            badge: "Full-Stack",
+            status: "Live"
+        },
         {
             id: 2,
             title: "ManoMitra - AI Mental Wellness Companion",
@@ -59,38 +90,6 @@ export const ProjectSection = () => {
             live: "https://github.com/Ankita2629/IRA",
             color: "from-blue-500/20 to-cyan-500/20",
             badge: "Voice AI",
-            status: "Live"
-        },
-        {
-            id: 1,
-            title: "ChatMate - Real-Time Messaging & Video Calls",
-            icon: Video,
-            date: "2024-2025",
-            category: "fullstack",
-            description: "Full-stack real-time communication platform with messaging, video calls, and language learner matching system.",
-            longDescription: "Built a comprehensive full-stack communication platform enabling seamless real-time messaging and video calls. Features secure authentication, friend request system, and intelligent language-based user matching with Stream Chat and Video APIs.",
-            technologies: ["React.js", "Node.js", "Express.js", "MongoDB", "Stream API", "JWT", "Tailwind CSS"],
-            features: [
-                "Secure JWT authentication & authorization",
-                "Real-time messaging via Stream Chat API",
-                "One-on-one video calls with screen sharing",
-                "Friend request and acceptance system",
-                "Profile-based language learner matching",
-                "Discover users by language preferences",
-                "Real-time notifications & updates",
-                "Call recording capability",
-                "Audio/video toggle controls",
-                "Auto-generated profile avatars"
-            ],
-            impact: {
-                features: "10+",
-                apis: "3",
-                responsive: "100%"
-            },
-            github: "https://github.com/Ankita2629/ChatMate",
-            live: "https://chatmate-wfdy.onrender.com",
-            color: "from-indigo-500/20 to-purple-500/20",
-            badge: "Full-Stack",
             status: "Live"
         },
         {
