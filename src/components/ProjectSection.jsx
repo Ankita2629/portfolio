@@ -10,7 +10,7 @@ export const ProjectSection = () => {
             id: 1,
             title: "ChatMate - Real-Time Messaging & Video Calls",
             icon: Video,
-            date: "2024-2025",
+            date: "November 2025",
             category: "fullstack",
             description: "Full-stack real-time communication platform with messaging, video calls, and language learner matching system.",
             longDescription: "Built a comprehensive full-stack communication platform enabling seamless real-time messaging and video calls. Features secure authentication, friend request system, and intelligent language-based user matching with Stream Chat and Video APIs.",
