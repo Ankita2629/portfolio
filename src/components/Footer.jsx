@@ -1,19 +1,35 @@
-import { ArrowUp } from "lucide-react";
+import { ArrowUp, Linkedin, Heart } from "lucide-react";
 
 export const Footer = () => {
   return (
-    <footer className="py-12 px-4 bg-card relative border-t border-border mt-12 pt-8 flex flex-wrap justify-between items-center">
-      {" "}
-      <p className="text-sm text-muted-foreground">
-        {" "}
-        &copy; {new Date().getFullYear()} Ankita Portfolio. All rights reserved.
-      </p>
-      <a
-        href="#hero"
-        className="p-2 rounded-full bg-primary/10 hover:bg-primary/20 text-primary transition-colors"
-      >
-        <ArrowUp size={20} />
-      </a>
+    <footer className="relative mt-20 border-t border-border bg-linear-to-b from-card to-background">
+      {/* Decorative top border */}
+      <div className="absolute top-0 left-0 right-0 h-px bg-linear-to-r from-transparent via-primary to-transparent"></div>
+
+      <div className="container mx-auto px-4 py-12">
+        {/* Main content centered */}
+        <div className="flex flex-col items-center justify-center space-y-6">
+          {/* Created by text with LinkedIn */}
+          <div className="flex items-center gap-2 text-center">
+            <span className="text-muted-foreground">Created with</span>
+            <Heart
+              size={16}
+              className="text-primary fill-primary animate-pulse"
+            />
+            <span className="text-muted-foreground">by</span>
+            <a
+              href="https://www.linkedin.com/in/ankitaa-singh"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group flex items-center gap-2 text-foreground font-semibold hover:text-primary transition-colors"
+            >
+              Ankita Kumari Singh
+            </a>
+          </div>
+        </div>
+      </div>
     </footer>
   );
 };
+
+export default Footer;

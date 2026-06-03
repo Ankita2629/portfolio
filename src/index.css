@@ -1,90 +1,92 @@
+/* Import Google Fonts - Outfit for Headings, Plus Jakarta Sans for Body */
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&family=Space+Grotesk:wght@300..700&display=swap');
+
 @import "tailwindcss";
 
+/* ========================= */
+/* KEYFRAMES */
+/* ========================= */
 
-@theme {
-  --color-border:hsl(var(--border));
-  --color-background:hsl(var(--background));
-  --color-foreground:hsl(var(--foreground));
+@keyframes float {
+  0%, 100% { transform: translateY(0) scale(1); }
+  50% { transform: translateY(-10px) scale(1.01); }
+}
 
-  --color-primary:hsl(var(--primary));
-  --color-primary-foreground:hsl(var(--primary-foreground));
+@keyframes pulse-cyan {
+  0%, 100% { box-shadow: 0 0 15px rgba(6, 182, 212, 0.15); }
+  50% { box-shadow: 0 0 30px rgba(6, 182, 212, 0.4); }
+}
 
-  --color-card:hsl(var(--card));
+@keyframes pulse-purple {
+  0%, 100% { box-shadow: 0 0 15px rgba(139, 92, 246, 0.15); }
+  50% { box-shadow: 0 0 30px rgba(139, 92, 246, 0.4); }
+}
 
-  --animate-float: float 6s ease-in-out infinite;
-  --animate-pulse-subtle: pulse-subtle 4s ease-in-out infinite;
-  --animate-fade-in: fade-in 0.7s ease-out forwards;
-  --animate-fade-in-delay-1: fade-in 0.7s ease-out 0.2s forwards;
-  --animate-fade-in-delay-2: fade-in 0.7s ease-out 0.4s forwards;
-  --animate-fade-in-delay-3: fade-in 0.7s ease-out 0.6s forwards;
-  --animate-fade-in-delay-4: fade-in 0.7s ease-out 0.8s forwards;
-  --animate-meteor: meteor 5s linear infinite;
-
-  @keyframes float {
-    0%,
-    100% {
-      transform: translateY(0);
-    }
-    50% {
-      transform: translateY(-10px);
-    }
+@keyframes meteor {
+  0% {
+    transform: rotate(215deg) translateX(0);
+    opacity: 1;
   }
-  @keyframes pulse-subtle {
-    0%,
-    100% {
-      opacity: 1;
-    }
-    50% {
-      opacity: 0.8;
-    }
-  }
-  @keyframes fade-in {
-    from {
-      opacity: 0;
-      transform: translateY(20px);
-    }
-    to {
-      opacity: 0;
-      transform: translateY(0);
-    }
-  }
-  @keyframes meteor {
-    0% {
-      transform: rotate(215deg) translateX(0);
-      opacity: 1;
-    }
-    70% {
-      opacity: 1;
-    }
-    100% {
-      transform: rotate(215deg) translateX(-500px);
-      opacity: 0;
-    }
+  70% { opacity: 1; }
+  100% {
+    transform: rotate(215deg) translateX(-500px);
+    opacity: 0;
   }
 }
 
+@keyframes drift-slow-1 {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  50% { transform: translate(40px, -40px) scale(1.15); }
+}
+
+@keyframes drift-slow-2 {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  50% { transform: translate(-40px, 40px) scale(0.9); }
+}
+
+/* ========================= */
+/* THEME VARIABLES */
+/* ========================= */
+
+@theme {
+  --color-border: hsl(var(--border));
+  --color-background: hsl(var(--background));
+  --color-foreground: hsl(var(--foreground));
+
+  --color-primary: hsl(var(--primary));
+  --color-primary-foreground: hsl(var(--primary-foreground));
+  --color-secondary: hsl(var(--secondary));
+  --color-accent: hsl(var(--accent));
+
+  --color-card: hsl(var(--card));
+  --color-muted: hsl(var(--muted));
+  --color-muted-foreground: hsl(var(--muted-foreground));
+
+  --animate-float: float 8s ease-in-out infinite;
+  --animate-meteor: meteor 6s linear infinite;
+}
+
+/* ========================= */
+/* BASE STYLES */
+/* ========================= */
+
 @layer base {
-  :root {
-    --background: 210 40% 98%;
-    --foreground: 222 47% 11%;
-
-    --card: 0 0% 100%;
-
-    --primary:250 47% 60%;
-    --primary-foreground: 210 40% 98%;
-
-    --border: 214 32% 91%;
-  }
+  :root,
   .dark {
-    --background: 222 47% 4%;
-    --foreground: 213 31% 91%;
+    --background: 250 24% 4%;
+    --foreground: 0 0% 98%;
 
-    --card: 222 47% 8%;
+    --card: 250 20% 7%;
+    --muted: 250 15% 12%;
+    --muted-foreground: 250 8% 68%;
 
-    --primary:250 65% 65%;
-    --primary-foreground: 213 31% 91%;
+    --primary: 187 90% 55%; /* Electric Cyan */
+    --primary-foreground: 0 0% 100%;
+    
+    --secondary: 263 90% 62%; /* Neon Purple */
+    --accent: 322 90% 58%; /* Rose pink */
 
-    --border: 217 33% 20%;
+    --border: 250 15% 14%;
   }
 
   * {
@@ -92,61 +94,99 @@
   }
 
   html {
-    @apply scroll-smooth;;
+    @apply scroll-smooth;
   }
 
   body {
-    @apply bg-background text-foreground transition-colors duration-300;
+    @apply bg-background text-foreground transition-colors duration-500 overflow-x-hidden;
+    font-family: 'Plus Jakarta Sans', sans-serif;
     font-feature-settings: "rlig" 1, "calt" 1;
+    
+    /* Clean dark background with soft glowing mesh gradient backdrops */
+    background-image: 
+      radial-gradient(circle at 50% -20%, rgba(6, 182, 212, 0.08) 0%, transparent 60%),
+      radial-gradient(circle at 10% 80%, rgba(139, 92, 246, 0.03) 0%, transparent 40%);
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Space Grotesk', sans-serif;
   }
 }
+
+/* ========================= */
+/* UTILITIES */
+/* ========================= */
 
 @utility container {
   margin-inline: auto;
-  padding-inline: 2rem;
-
-  @media (width >= 640px) {
-    max-width: 640px;
-  }
-  @media (width >= 768px) {
-    max-width: 768px;
-  }
-  @media (width >= 1024px) {
-    max-width: 1024px;
-  }
-  @media (width >= 1280px) {
-    max-width: 1280px;
-  }
-  @media (width >= 1400px) {
-    max-width: 1400px;
-  }
+  padding-inline: 1.5rem;
+  max-width: 1200px;
 }
 
 @utility text-glow {
-  @apply relative;
-  text-shadow: 0 0 10px rgba(167,139,250,0.5);
+  text-shadow: 0 0 20px rgba(6, 182, 212, 0.6);
 }
 
-@utility card-hover {
-  @apply transition-transform duration-300 hover:scale-[1.02] hover:shadow-lg;
+@utility cyber-card {
+  position: relative;
+  background: rgba(10, 8, 20, 0.7);
+  border: 1px solid rgba(6, 182, 212, 0.15);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+  clip-path: polygon(0 0, 100% 0, 100% calc(100% - 12px), calc(100% - 12px) 100%, 0 100%);
+  
+  /* Glowing Corner Ticks */
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 10px;
+    height: 10px;
+    border-top: 2px solid hsl(var(--primary));
+    border-left: 2px solid hsl(var(--primary));
+    pointer-events: none;
+  }
+
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 12px;
+    height: 12px;
+    background: hsl(var(--secondary));
+    clip-path: polygon(100% 0, 100% 100%, 0 100%);
+    pointer-events: none;
+    opacity: 0.7;
+  }
 }
 
-@utility gradient-border {
-  @apply relative rounded-md;
-  background: linera-gradient(to right, hsl(var(--card)),hsl(var(--card)));
-  background-clip: padding-box;
-  border: 1px solid transparent;
+@utility cyber-card-hover {
+  &:hover {
+    border-color: rgba(6, 182, 212, 0.5);
+    box-shadow: 0 0 25px rgba(6, 182, 212, 0.25);
+    transform: translateY(-2px);
+  }
 }
 
-@utility cosmic-button {
-  @apply px-6 py-2 rounded-full bg-primary text-primary-foreground font-medium
-         transition-all duration-300 hover:shadow-[0_0_10px_rrgba(139,92,246,0.5)]
-         hover:scale-105 active:scale-95;
+@utility cyber-button {
+  @apply px-6 py-2.5 bg-transparent border-2 border-primary text-primary font-bold text-xs uppercase tracking-widest
+         transition-all duration-300 hover:bg-primary hover:text-slate-950 hover:shadow-[0_0_20px_rgba(6,182,212,0.4)]
+         active:scale-95 rounded-none;
+  clip-path: polygon(0 0, calc(100% - 8px) 0, 100% 8px, 100% 100%, 8px 100%, 0 calc(100% - 8px));
+}
+
+@utility cyber-button-fill {
+  @apply px-6 py-2.5 bg-primary border-2 border-primary text-slate-950 font-bold text-xs uppercase tracking-widest
+         transition-all duration-300 hover:bg-transparent hover:text-primary hover:shadow-[0_0_20px_rgba(6,182,212,0.4)]
+         active:scale-95 rounded-none;
+  clip-path: polygon(0 0, calc(100% - 8px) 0, 100% 8px, 100% 100%, 8px 100%, 0 calc(100% - 8px));
 }
 
 @utility star {
   @apply absolute rounded-full bg-white;
-  box-shadow: 0 0 10px 2px rgba(255,255,255,0.4);
+  box-shadow: 0 0 6px 1px rgba(255,255,255,0.3);
 }
 
 @utility meteor {
@@ -154,9 +194,51 @@
   box-shadow: 0 0 10px 5px rgba(255,255,255,0.3);
 }
 
-#root {
-  max-width: 100%;
-  margin: 0 auto;
-  padding: 0;
-  text-align: center;
+/* ========================= */
+/* GLOWING ORBS BACKGROUND */
+/* ========================= */
+
+.bg-orb-1 {
+  position: absolute;
+  top: 10%;
+  left: 5%;
+  width: 400px;
+  height: 400px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(6, 182, 212, 0.12) 0%, transparent 70%);
+  filter: blur(80px);
+  animation: drift-slow-1 25s infinite alternate ease-in-out;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.bg-orb-2 {
+  position: absolute;
+  bottom: 15%;
+  right: -5%;
+  width: 450px;
+  height: 450px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(139, 92, 246, 0.1) 0%, transparent 70%);
+  filter: blur(85px);
+  animation: drift-slow-2 30s infinite alternate ease-in-out;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* ========================= */
+/* SCROLLBAR */
+/* ========================= */
+
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: hsl(var(--background));
+}
+
+::-webkit-scrollbar-thumb {
+  background: hsl(var(--primary));
+  border-radius: 0;
 }

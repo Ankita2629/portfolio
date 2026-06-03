@@ -1,129 +1,130 @@
-import { Code, Palette, Sparkles } from 'lucide-react';
-import { useState } from 'react';
+import { Code2, Cpu, Activity, Download, Mail } from "lucide-react";
+import { useState } from "react";
 
 export const AboutSection = () => {
-    const [hoveredCard, setHoveredCard] = useState(null);
-    
-    const skills = [
-        {
-            id: 1,
-            icon: Code,
-            title: "Modern Development",
-            description: "Building with React, TypeScript, and cutting-edge tools to deliver fast, scalable applications.",
-            color: "from-blue-500/20 to-cyan-500/20"
-        },
-        {
-            id: 2,
-            icon: Palette,
-            title: "Thoughtful Design",
-            description: "Creating interfaces that are visually striking yet intuitive, where every element serves a purpose.",
-            color: "from-blue-500/20 to-cyan-500/20"
-        },
-        {
-            id: 3,
-            icon: Sparkles,
-            title: "Delightful Details",
-            description: "Adding subtle animations and micro-interactions that transform good experiences into memorable ones.",
-            color: "from-blue-500/20 to-cyan-500/20"
-        }
-    ];
+  const [hoveredCard, setHoveredCard] = useState(null);
 
-    return (
-      <section id="about" className="py-24 px-4 relative overflow-hidden">
-        {/* Background decoration */}
-        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-primary/5 to-transparent pointer-events-none dark:via-primary/10" />
-        
-        <div className="container mx-auto max-w-5xl relative z-10">
-            <h2 className="text-3xl md:text-4xl font-bold mb-12 text-center">
-              About <span className="text-primary">Me</span>
-            </h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-start">
-                <div className="space-y-6">
-                    <h3 className="text-2xl font-semibold">
-                        Crafting Digital Experiences
-                    </h3>
-                    
-                    <p className="text-muted-foreground leading-relaxed">
-                       I'm a frontend developer with a keen eye for design and a passion for creating 
-                       web experiences that are not just functional, but delightful to use. Every pixel, 
-                       animation, and interaction matters.
-                    </p>
-                    <p className="text-muted-foreground leading-relaxed">
-                        My approach combines technical excellence with creative thinking. I believe the 
-                        best websites strike a perfect balance between stunning visuals and seamless 
-                        functionality—where form truly meets function.
-                    </p>
-                    <div className="flex flex-col sm:flex-row gap-4 pt-4">
-                        <a 
-                            href="#contact" 
-                            className="cosmic-button transform hover:scale-105 transition-transform duration-300"
-                        >
-                            Get In Touch
-                        </a>
-                        <a 
-                            href="#" 
-                            className="px-6 py-2 rounded-full border border-primary text-primary hover:bg-primary/10 transition-all duration-300 text-center inline-block transform hover:scale-105"
-                        >
-                            Download CV
-                        </a>
-                    </div>
-                </div>
-                
-                <div className="grid grid-cols-1 gap-6 relative">
-                    {/* Background glow effect */}
-                    <div className="absolute inset-0 bg-gradient-to-br from-primary/10 via-transparent to-primary/5 rounded-3xl blur-3xl -z-10" />
-                    
-                    {skills.map((skill, index) => {
-                        const Icon = skill.icon;
-                        const isHovered = hoveredCard === skill.id;
-                        
-                        return (
-                            <div
-                                key={skill.id}
-                                className={`p-6 cursor-pointer transition-all duration-500 transform rounded-lg shadow-lg hover:shadow-xl border border-gray-200 dark:border-slate-800 ${
-                                    isHovered ? 'scale-105 -translate-y-2' : 'scale-100'
-                                }`}
-                                style={{
-                                    backgroundColor: 'transparent',
-                                    animationDelay: `${index * 0.1}s`
-                                }}
-                                onMouseEnter={() => setHoveredCard(skill.id)}
-                                onMouseLeave={() => setHoveredCard(null)}
-                            >
-                                {/* Animated background gradient on hover */}
-                                <div 
-                                    className={`absolute inset-0 bg-gradient-to-br ${skill.color} rounded-lg opacity-0 transition-opacity duration-500 ${
-                                        isHovered ? 'opacity-100' : ''
-                                    }`}
-                                />
-                                
-                                <div className="flex items-start gap-4 relative z-10">
-                                    <div className={`p-3 rounded-full bg-primary/20 dark:bg-primary/20 flex-shrink-0 transition-all duration-500 ${
-                                        isHovered ? 'bg-primary/30 dark:bg-primary/30 rotate-12 scale-110' : ''
-                                    }`}>
-                                        <Icon className={`w-6 h-6 text-primary transition-all duration-500 ${
-                                            isHovered ? 'scale-110' : ''
-                                        }`} />
-                                    </div>
-                                    <div className="flex-1">
-                                        <h4 className={`font-semibold text-lg mb-2 transition-colors duration-300 ${
-                                            isHovered ? 'text-primary' : ''
-                                        }`}>
-                                            {skill.title}
-                                        </h4>
-                                        <p className={`text-sm text-muted-foreground leading-relaxed transition-all duration-300 ${
-                                            isHovered ? 'translate-x-1' : ''
-                                        }`}>
-                                            {skill.description}
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
-                        );
-                    })}
-                </div>
+  const highlights = [
+    {
+      id: 1,
+      icon: Code2,
+      title: "Full-Stack Engineering",
+      description:
+        "Building scalable systems using modern frameworks (Next.js 15, FastAPI, .NET Core) integrated with PostgreSQL, MongoDB, and AWS.",
+      color: "rgba(6, 182, 212, 0.08)",
+      glowColor: "rgba(6, 182, 212, 0.25)",
+    },
+    {
+      id: 2,
+      icon: Cpu,
+      title: "AI & Machine Learning",
+      description:
+        "Creating intelligent solutions using LLM orchestration (Gemini 2.0, OpenAI, RAG) and computer vision models (MediaPipe, TensorFlow).",
+      color: "rgba(139, 92, 246, 0.08)",
+      glowColor: "rgba(139, 92, 246, 0.25)",
+    },
+    {
+      id: 3,
+      icon: Activity,
+      title: "Real-Time Systems",
+      description:
+        "Implementing WebSocket protocols, Socket.IO connections, and Stream APIs for real-time video calls, messaging, and multi-user sync.",
+      color: "rgba(244, 63, 94, 0.08)",
+      glowColor: "rgba(244, 63, 94, 0.25)",
+    },
+  ];
+
+  return (
+    <section id="about" className="py-32 px-4 relative overflow-hidden">
+      <div className="container mx-auto max-w-6xl relative z-10">
+        <h2 className="text-4xl md:text-5xl font-black mb-16 text-center text-white">
+          About <span className="text-primary text-glow">Me</span>
+        </h2>
+
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+          {/* Left Description Side */}
+          <div className="space-y-6 text-left">
+            <h3 className="text-2xl md:text-3xl font-bold text-white tracking-tight">
+              Executing Code to Compile Premium Full-Stack AI Prototypes
+            </h3>
+
+            <p className="text-muted-foreground leading-relaxed text-sm md:text-base">
+              I am a final-year Computer Science engineering student specializing in Data Science at the Buddha Institute of Technology. I am driven by the passion to engineer robust, high-performance web applications and design intelligent systems.
+            </p>
+
+            <p className="text-muted-foreground leading-relaxed text-sm md:text-base">
+              Through my experience as a Software Development Intern at String AI India and building advanced AI-powered SaaS platforms (such as healthcare diagnostic portals and real-time hand gesture canvas boards), I have developed strong skills in both full-stack technologies and machine learning pipelines.
+            </p>
+
+            {/* Buttons */}
+            <div className="flex flex-col sm:flex-row gap-4 pt-6">
+              <a
+                href="#contact"
+                className="cyber-button-fill"
+              >
+                <Mail className="w-4 h-4 inline-block mr-2" />
+                Initialize Link //
+              </a>
+              <a
+                href="/resume.pdf"
+                download="Ankita_Singh_Resume.pdf"
+                className="cyber-button"
+              >
+                <Download className="w-4 h-4 inline-block mr-2" />
+                Capture CV.pdf //
+              </a>
             </div>
+          </div>
+
+          {/* Right Highlights Cards */}
+          <div className="grid grid-cols-1 gap-6 relative">
+            {highlights.map((item, index) => {
+              const Icon = item.icon;
+              const isHovered = hoveredCard === item.id;
+
+              return (
+                <div
+                  key={item.id}
+                  className="cyber-card transition-all duration-300 cursor-pointer p-6"
+                  style={{
+                    backgroundColor: isHovered ? item.color : "rgba(10, 8, 20, 0.7)",
+                    borderColor: isHovered ? "rgba(6, 182, 212, 0.5)" : "rgba(6, 182, 212, 0.15)",
+                    boxShadow: isHovered
+                      ? `0 0 25px ${item.glowColor}`
+                      : "0 4px 30px rgba(0,0,0,0.4)",
+                  }}
+                  onMouseEnter={() => setHoveredCard(item.id)}
+                  onMouseLeave={() => setHoveredCard(null)}
+                >
+                  <div className="flex items-start gap-5 relative z-10">
+                    <div
+                      className={`p-3 border transition-all duration-300 rounded-none ${
+                        isHovered
+                          ? "bg-primary/20 border-primary text-white scale-110 rotate-3"
+                          : "bg-white/5 border-white/10 text-muted-foreground"
+                      }`}
+                    >
+                      <Icon className="w-5 h-5" />
+                    </div>
+                    <div className="text-left flex-1">
+                      <h4
+                        className={`font-bold text-lg mb-2 transition-colors duration-300 ${
+                          isHovered ? "text-primary text-glow" : "text-slate-200"
+                        }`}
+                      >
+                        {item.title}
+                      </h4>
+                      <p className="text-xs md:text-sm text-muted-foreground leading-relaxed">
+                        {item.description}
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              );
+            })}
+          </div>
         </div>
-      </section>
-    );
+      </div>
+    </section>
+  );
 };

@@ -2,36 +2,37 @@ import { useEffect, useState } from "react";
 import { X, Menu } from "lucide-react";
 
 const navItems = [
-  { name: "Home", href: "#home" },
+  { name: "Home", href: "#hero" },
   { name: "About", href: "#about" },
+  { name: "Education", href: "#education" },
   { name: "Skills", href: "#skills" },
+  { name: "Experience", href: "#experience" },
   { name: "Projects", href: "#projects" },
+  { name: "Achievements", href: "#achievements" },
   { name: "Contact", href: "#contact" },
 ];
 
 export const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [activeSection, setActiveSection] = useState("home");
+  const [activeSection, setActiveSection] = useState("hero");
   const [hoveredItem, setHoveredItem] = useState(null);
 
   useEffect(() => {
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 10);
+      setIsScrolled(window.scrollY > 30);
       
-      // If at the very top of the page, set to home
       if (window.scrollY < 100) {
-        setActiveSection("home");
+        setActiveSection("hero");
         return;
       }
       
-      // Detect active section
       const sections = navItems.map(item => item.href.substring(1));
       for (const section of sections) {
         const element = document.getElementById(section);
         if (element) {
           const rect = element.getBoundingClientRect();
-          if (rect.top <= 150 && rect.bottom >= 150) {
+          if (rect.top <= 180 && rect.bottom >= 180) {
             setActiveSection(section);
             break;
           }
@@ -39,9 +40,7 @@ export const Navbar = () => {
       }
     };
     
-    // Run on mount to set initial state
     handleScroll();
-    
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
@@ -52,30 +51,39 @@ export const Navbar = () => {
 
   return (
     <nav
-      className={`fixed w-full z-40 transition-all duration-300 ${
+      className={`fixed top-0 left-0 w-full z-50 transition-all duration-500 ${
         isScrolled 
-          ? "py-3 bg-background/80 backdrop-blur-md shadow-lg border-b border-primary/10" 
-          : "py-5"
+          ? "py-4 px-4 md:px-8" 
+          : "py-6 px-4 md:px-8"
       }`}
     >
-      <div className="container flex items-center justify-between">
-        {/* Logo with hover effect */}
+      <div 
+        className={`mx-auto max-w-6xl flex items-center justify-between transition-all duration-500 rounded-none border ${
+          isScrolled 
+            ? "px-6 py-3 bg-slate-950/80 border-primary/40 backdrop-blur-xl shadow-[0_0_20px_rgba(6,182,212,0.15)]" 
+            : "px-2 py-2 bg-transparent border-transparent"
+        }`}
+        style={isScrolled ? {
+          clipPath: "polygon(0 0, calc(100% - 12px) 0, 100% 12px, 100% 100%, 12px 100%, 0 calc(100% - 12px))"
+        } : {}}
+      >
+        {/* Logo */}
         <a
-          className="text-xl font-bold text-primary flex items-center group"
+          className="text-2xl font-black tracking-tight flex items-center group"
           href="#hero"
         >
-          <span className="relative z-10 transition-all duration-300 group-hover:scale-110">
-            <span className="text-glow text-foreground group-hover:text-primary transition-colors duration-300">
-              Ankita
-            </span>{" "}
-            <span className="group-hover:translate-x-1 inline-block transition-transform duration-300">
-              Singh
+          <span className="relative z-10 transition-all duration-300 group-hover:scale-105 flex items-center gap-1">
+            <span className="text-primary font-black text-glow tracking-widest text-xl md:text-2xl">
+              ANKITA
+            </span>
+            <span className="text-primary bg-primary/10 border border-primary/30 px-2 py-0.5 rounded-none ml-1 text-[10px] tracking-widest font-bold">
+              SYSTEM.SYS
             </span>
           </span>
         </a>
 
-        {/* Desktop Nav with interactive indicators */}
-        <div className="hidden md:flex space-x-1 relative">
+        {/* Desktop Nav */}
+        <div className="hidden lg:flex items-center space-x-1">
           {navItems.map((item, key) => {
             const active = isActive(item.href);
             const hovered = hoveredItem === key;
@@ -86,56 +94,34 @@ export const Navbar = () => {
                 href={item.href}
                 onMouseEnter={() => setHoveredItem(key)}
                 onMouseLeave={() => setHoveredItem(null)}
-                className={`relative px-4 py-2 transition-all duration-300 rounded-lg ${
+                className={`relative px-4 py-1.5 transition-all duration-300 rounded-none text-xs font-bold uppercase tracking-wider ${
                   active 
-                    ? "text-primary" 
-                    : "text-foreground/80 hover:text-primary"
+                    ? "text-primary border-b-2 border-primary" 
+                    : "text-muted-foreground hover:text-white"
                 }`}
               >
-                {/* Active indicator */}
-                {active && (
-                  <span className="absolute inset-0 bg-primary/10 rounded-lg animate-pulse" />
-                )}
-                
-                {/* Hover background */}
-                <span 
-                  className={`absolute inset-0 bg-primary/5 rounded-lg transition-opacity duration-300 ${
-                    hovered ? "opacity-100" : "opacity-0"
-                  }`}
-                />
-                
-                {/* Text */}
-                <span className={`relative z-10 inline-block transition-transform duration-300 ${
-                  hovered ? "scale-110" : "scale-100"
-                }`}>
+                <span className="relative z-10">
                   {item.name}
                 </span>
-                
-                {/* Underline animation */}
-                <span 
-                  className={`absolute bottom-0 left-0 h-0.5 bg-primary transition-all duration-300 ${
-                    active ? "w-full" : hovered ? "w-full" : "w-0"
-                  }`}
-                />
               </a>
             );
           })}
         </div>
 
-        {/* Mobile Menu Button with animation */}
+        {/* Mobile Menu Button */}
         <button
           onClick={() => setIsMenuOpen(!isMenuOpen)}
-          className="md:hidden text-foreground z-50 relative p-2 hover:bg-primary/10 rounded-lg transition-all duration-300 hover:scale-110"
+          className="lg:hidden text-primary z-50 relative p-2 bg-primary/10 border border-primary/30 hover:bg-primary/20 rounded-none transition-all duration-300 active:scale-95"
         >
-          <div className="relative w-7 h-7">
+          <div className="relative w-5 h-5">
             <Menu 
-              size={28} 
+              size={20} 
               className={`absolute inset-0 transition-all duration-300 ${
                 isMenuOpen ? "rotate-90 opacity-0" : "rotate-0 opacity-100"
               }`}
             />
             <X 
-              size={28} 
+              size={20} 
               className={`absolute inset-0 transition-all duration-300 ${
                 isMenuOpen ? "rotate-0 opacity-100" : "-rotate-90 opacity-0"
               }`}
@@ -144,15 +130,15 @@ export const Navbar = () => {
         </button>
       </div>
 
-      {/* Mobile Menu with staggered animations */}
+      {/* Mobile Menu */}
       <div
-        className={`fixed inset-0 bg-background/95 backdrop-blur-md z-40 flex flex-col items-center justify-center transition-all duration-300 md:hidden ${
+        className={`fixed inset-0 bg-slate-950/98 backdrop-blur-2xl z-40 flex flex-col items-center justify-center transition-all duration-500 lg:hidden ${
           isMenuOpen
-            ? "opacity-100 pointer-events-auto"
-            : "opacity-0 pointer-events-none"
+            ? "opacity-100 translate-y-0"
+            : "opacity-0 -translate-y-full pointer-events-none"
         }`}
       >
-        <div className="flex flex-col space-y-8 text-xl">
+        <div className="flex flex-col space-y-4 text-xl w-full max-w-xs px-6">
           {navItems.map((item, key) => {
             const active = isActive(item.href);
             
@@ -160,31 +146,21 @@ export const Navbar = () => {
               <a
                 key={key}
                 href={item.href}
-                className={`relative text-center transition-all duration-300 group ${
-                  active ? "text-primary" : "text-foreground/80"
+                className={`relative py-3 px-6 rounded-none text-center transition-all duration-300 group font-bold text-sm uppercase tracking-wider border ${
+                  active 
+                    ? "text-primary bg-primary/15 border-primary" 
+                    : "text-muted-foreground hover:text-white border-white/5 hover:border-white/25 hover:bg-white/5"
                 }`}
                 onClick={() => setIsMenuOpen(false)}
                 style={{
                   animation: isMenuOpen 
-                    ? `slideIn 0.3s ease-out ${key * 0.1}s both` 
+                    ? `slideInMobile 0.4s ease-out ${key * 0.08}s both` 
                     : "none"
                 }}
               >
-                {/* Active indicator for mobile */}
-                {active && (
-                  <span className="absolute -left-8 top-1/2 -translate-y-1/2 w-4 h-4 bg-primary rounded-full animate-pulse" />
-                )}
-                
-                {/* Hover background for mobile */}
-                <span className="absolute inset-0 -inset-x-4 bg-primary/10 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                
-                {/* Text */}
-                <span className="relative z-10 inline-block group-hover:scale-110 transition-transform duration-300">
+                <span className="relative z-10">
                   {item.name}
                 </span>
-                
-                {/* Underline */}
-                <span className="absolute -bottom-2 left-1/2 -translate-x-1/2 h-0.5 bg-primary w-0 group-hover:w-full transition-all duration-300" />
               </a>
             );
           })}
@@ -192,19 +168,15 @@ export const Navbar = () => {
       </div>
 
       <style>{`
-        @keyframes slideIn {
+        @keyframes slideInMobile {
           from {
             opacity: 0;
-            transform: translateY(-20px);
+            transform: translateY(-10px) scale(0.98);
           }
           to {
             opacity: 1;
-            transform: translateY(0);
+            transform: translateY(0) scale(1);
           }
-        }
-        
-        .text-glow {
-          text-shadow: 0 0 20px rgba(var(--primary-rgb, 139, 92, 246), 0.3);
         }
       `}</style>
     </nav>

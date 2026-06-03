@@ -6,8 +6,8 @@ import {
   Send,
   Github,
   Linkedin,
-  FileText,
   Loader,
+  Heart,
 } from "lucide-react";
 import { useToast } from "../hooks/use-toast";
 
@@ -53,8 +53,8 @@ export function ContactSection() {
     {
       icon: Phone,
       title: "Phone",
-      value: "+91-1234567890",
-      link: "tel:+911234567890",
+      value: "+91-6202456608",
+      link: "tel:+916202456608",
     },
     {
       icon: MapPin,
@@ -65,63 +65,52 @@ export function ContactSection() {
   ];
 
   const socialLinks = [
-    { icon: Github, link: "https://github.com/Ankita2629", name: "GitHub" },
+    {
+      icon: Github,
+      link: "https://github.com/ankita-singhhh",
+      name: "GitHub",
+      color: "hover:text-white hover:border-white/30",
+    },
     {
       icon: Linkedin,
-      link: "https://linkedin.com/in/ankita-singh-932729309",
+      link: "https://www.linkedin.com/in/ankitaa-singh",
       name: "LinkedIn",
+      color: "hover:text-white hover:border-white/30",
     },
-    { icon: FileText, link: "#", name: "Portfolio" },
   ];
 
   return (
     <div
       id="contact"
-      className="min-h-screen py-20 px-4 relative overflow-hidden"
+      className="min-h-screen py-32 px-4 relative overflow-hidden"
     >
-      {/* Animated Stars Background */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none dark:block hidden">
-        {[...Array(50)].map((_, i) => (
-          <div
-            key={i}
-            className="absolute w-1 h-1 bg-white rounded-full animate-twinkle"
-            style={{
-              top: `${Math.random() * 100}%`,
-              left: `${Math.random() * 100}%`,
-              animationDelay: `${Math.random() * 3}s`,
-              opacity: Math.random() * 0.7 + 0.3,
-            }}
-          />
-        ))}
-
-        {/* Shooting Stars */}
-        <div
-          className="absolute top-1/4 right-1/4 w-32 h-0.5 bg-gradient-to-r from-transparent via-white to-transparent animate-shoot"
-          style={{ animationDelay: "2s" }}
-        />
-        <div
-          className="absolute top-3/4 left-1/3 w-24 h-0.5 bg-gradient-to-r from-transparent via-white to-transparent animate-shoot"
-          style={{ animationDelay: "5s" }}
-        />
+      {/* Background decoration orbs */}
+      <div className="absolute inset-0 pointer-events-none">
+        <div className="bg-orb-1" />
       </div>
 
-      <div className="container mx-auto max-w-6xl relative z-10">
+      <div className="container mx-auto max-w-5xl relative z-10">
         {/* Header */}
-        <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-4xl font-bold mb-12 text-center">
-            Get In <span className="text-primary">Touch</span>
+        <div className="text-center mb-24">
+          <div className="inline-flex items-center gap-2 bg-white/5 text-white px-4 py-1.5 rounded-full text-xs font-bold tracking-wider uppercase border border-white/5 mb-4">
+            <Heart className="w-3.5 h-3.5" />
+            Contact
+          </div>
+          <h2 className="text-3xl md:text-4xl font-bold mb-4 text-white">
+            Get In Touch
           </h2>
-          <p className="text-muted-foreground text-lg">
-            Have a project in mind or want to collaborate? Feel free to reach
-            out, I'm always open to discussing new opportunities.
+          <p className="text-slate-400 text-sm md:text-base max-w-2xl mx-auto">
+            Have an opportunity or project? Shoot me a message and let's collaborate.
           </p>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
-          {/* Left Side - Contact Info */}
-          <div className="space-y-8">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
+          {/* Left Side - Contact Info (5 cols) */}
+          <div className="lg:col-span-5 space-y-8 text-left">
             <div>
-              <h3 className="text-2xl font-bold mb-8">Contact Information</h3>
+              <h3 className="text-xl font-bold mb-8 text-white">
+                Registry Channels
+              </h3>
               <div className="space-y-6">
                 {contactInfo.map((info, index) => {
                   const Icon = info.icon;
@@ -133,14 +122,14 @@ export function ContactSection() {
                       rel="noopener noreferrer"
                       className="flex items-start gap-4 group cursor-pointer"
                     >
-                      <div className="p-3 rounded-lg bg-primary/10 border border-primary/20 group-hover:bg-primary/20 group-hover:border-primary/40 transition-all duration-300">
-                        <Icon className="w-5 h-5 text-primary" />
+                      <div className="p-3.5 bg-white/5 border border-white/10 group-hover:border-white/30 transition-all duration-300 rounded-xl">
+                        <Icon className="w-5 h-5 text-slate-300" />
                       </div>
                       <div>
-                        <div className="text-muted-foreground text-sm mb-1">
+                        <div className="text-slate-400 text-[10px] uppercase tracking-wider font-semibold mb-0.5">
                           {info.title}
                         </div>
-                        <div className="group-hover:text-primary transition-colors">
+                        <div className="text-slate-200 group-hover:text-white transition-colors font-bold text-sm">
                           {info.value}
                         </div>
                       </div>
@@ -151,8 +140,10 @@ export function ContactSection() {
             </div>
 
             {/* Social Links */}
-            <div>
-              <h4 className="text-lg font-semibold mb-4">Connect With Me</h4>
+            <div className="pt-6 border-t border-white/5">
+              <h4 className="text-xs font-bold text-slate-400 uppercase tracking-wider mb-4">
+                Node Connections
+              </h4>
               <div className="flex gap-3">
                 {socialLinks.map((social, index) => {
                   const Icon = social.icon;
@@ -162,7 +153,7 @@ export function ContactSection() {
                       href={social.link}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="p-3 bg-transparent border border-gray-200 dark:border-slate-700 rounded-lg hover:bg-primary/20 hover:border-primary/50 transition-all duration-300 hover:scale-110"
+                      className={`p-3.5 bg-white/5 border border-white/10 rounded-xl transition-all duration-300 ${social.color}`}
                       title={social.name}
                     >
                       <Icon className="w-5 h-5" />
@@ -173,13 +164,15 @@ export function ContactSection() {
             </div>
           </div>
 
-          {/* Right Side - Contact Form */}
-          <div className="bg-transparent backdrop-blur-xl rounded-2xl p-8 border border-gray-200 dark:border-slate-800">
-            <h3 className="text-2xl font-bold mb-6">Send a Message</h3>
+          {/* Right Side - Contact Form (7 cols) */}
+          <div className="lg:col-span-7 modern-card rounded-2xl p-8 border border-white/5 text-left">
+            <h3 className="text-lg font-bold mb-6 text-white">
+              Send Message
+            </h3>
 
-            <form onSubmit={handleSubmit} className="space-y-5">
+            <form onSubmit={handleSubmit} className="space-y-6">
               <div>
-                <label className="block text-sm text-muted-foreground mb-2">
+                <label className="block text-[10px] text-slate-400 uppercase tracking-wider mb-2 font-bold">
                   Your Name
                 </label>
                 <input
@@ -188,13 +181,13 @@ export function ContactSection() {
                   value={formData.name}
                   onChange={handleChange}
                   required
-                  className="w-full px-4 py-3 bg-transparent border border-gray-200 dark:border-slate-700 rounded-lg focus:outline-none focus:border-primary transition-colors placeholder:text-gray-400 dark:placeholder:text-gray-500"
-                  placeholder="Enter Your Name"
+                  className="w-full px-4 py-3 bg-zinc-950/60 border border-white/10 rounded-xl focus:outline-none focus:border-white/20 transition-all placeholder:text-slate-600 text-white font-medium text-sm"
+                  placeholder="Console Name"
                 />
               </div>
 
               <div>
-                <label className="block text-sm text-muted-foreground mb-2">
+                <label className="block text-[10px] text-slate-400 uppercase tracking-wider mb-2 font-bold">
                   Your Email
                 </label>
                 <input
@@ -203,14 +196,14 @@ export function ContactSection() {
                   value={formData.email}
                   onChange={handleChange}
                   required
-                  className="w-full px-4 py-3 bg-transparent border border-gray-200 dark:border-slate-700 rounded-lg focus:outline-none focus:border-primary transition-colors placeholder:text-gray-400 dark:placeholder:text-gray-500"
-                  placeholder="abc@gmail.com"
+                  className="w-full px-4 py-3 bg-zinc-950/60 border border-white/10 rounded-xl focus:outline-none focus:border-white/20 transition-all placeholder:text-slate-600 text-white font-medium text-sm"
+                  placeholder="address@domain.com"
                 />
               </div>
 
               <div>
-                <label className="block text-sm text-muted-foreground mb-2">
-                  Your Message
+                <label className="block text-[10px] text-slate-400 uppercase tracking-wider mb-2 font-bold">
+                  Message Details
                 </label>
                 <textarea
                   name="message"
@@ -218,25 +211,25 @@ export function ContactSection() {
                   onChange={handleChange}
                   required
                   rows={5}
-                  className="w-full px-4 py-3 bg-transparent border border-gray-200 dark:border-slate-700 rounded-lg focus:outline-none focus:border-primary transition-colors placeholder:text-gray-400 dark:placeholder:text-gray-500 resize-none"
-                  placeholder="Type your message here..."
+                  className="w-full px-4 py-3 bg-zinc-950/60 border border-white/10 rounded-xl focus:outline-none focus:border-white/20 transition-all placeholder:text-slate-600 text-white font-medium text-sm resize-none"
+                  placeholder="Enter message details here..."
                 />
               </div>
 
               <button
                 type="submit"
                 disabled={isSubmitting}
-                className="w-full py-4 bg-gradient-to-r from-primary to-primary/80 hover:from-primary/90 hover:to-primary/70 rounded-full font-semibold text-lg transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2 shadow-lg shadow-primary/50 text-white"
+                className="w-full btn-primary cursor-pointer"
               >
                 {isSubmitting ? (
                   <>
-                    <Loader className="w-5 h-5 animate-spin" />
+                    <Loader className="w-4 h-4 animate-spin inline-block mr-2" />
                     Sending...
                   </>
                 ) : (
                   <>
-                    <Send className="w-5 h-5" />
-                    Send Message
+                    <Send className="w-4 h-4 inline-block mr-2" />
+                    Transmit Signal
                   </>
                 )}
               </button>
@@ -244,26 +237,6 @@ export function ContactSection() {
           </div>
         </div>
       </div>
-
-      <style>{`
-        @keyframes twinkle {
-          0%, 100% { opacity: 0.3; }
-          50% { opacity: 1; }
-        }
-        @keyframes shoot {
-          0% {
-            transform: translateX(0) translateY(0) rotate(-45deg);
-            opacity: 1;
-          }
-          70% { opacity: 1; }
-          100% {
-            transform: translateX(-300px) translateY(300px) rotate(-45deg);
-            opacity: 0;
-          }
-        }
-        .animate-twinkle { animation: twinkle 3s ease-in-out infinite; }
-        .animate-shoot { animation: shoot 3s ease-in-out infinite; }
-      `}</style>
     </div>
   );
 }
